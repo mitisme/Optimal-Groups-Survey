@@ -119,7 +119,7 @@ def send_invitation_email(name, netid, new_code, formatted_expire_date):
     server.connect('Mailhub.iastate.edu')
     server.starttls()
     email = f"{netid}@iastate.edu"
-    link = f'http://coms-402-001.class.las.iastate.edu/frontend/instructorNetid.html'
+    link = f'http://{config_data["server_domain"]}/frontend/instructorNetid.html'    
     #link = f'http://127.0.0.1:5000/frontend/instructorNetid.html'
     msg = MIMEMultipart()
     msg['From'] = sender_email
@@ -191,7 +191,7 @@ def send_email_to_students(class_df, course_data_id, course, deadline):
                 name = row['Student']
                 code = row['Verification Code']
                 email = f"{netid}@iastate.edu"
-                link = f'http://coms-402-001.class.las.iastate.edu/frontend/preferences.html?id={course_data_id}&code={code}'
+                link = f'http://{config_data["server_domain"]}/frontend/preferences.html?id={course_data_id}&code={code}'
                 #link = f'http://127.0.0.1:5000/frontend/preferences.html?id={course_data_id}&code={code}'
                 msg = MIMEMultipart()
                 msg['From'] = sender_email
