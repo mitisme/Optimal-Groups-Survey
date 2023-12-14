@@ -31,10 +31,10 @@ SSH Clone if HTTP doesnt work
   11. past into the textbox on github and give it a name
   12. submit
   13. click on clone
-  14. click HTTP
+  14. click SSH
   15. Click the copy button or highlight and copy link
   16. go to your chosen folder
   17. rightclick and 'git bash here'
   18. 'git init' if you haven't
-  19. 'git clone {paste the link here}'
+  19. 'git clone {paste the copied SSH here}'
   20. enjoy
