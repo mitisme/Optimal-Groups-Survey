@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="survey.css">
+    <title>Optimal Survey Preferences</title>
+
+    <script src="functions.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script>
+
+        function getCodeFromURL() {
+            const param = new URLSearchParams(window.location.search)
+            const verticationCode = param.get('code')
+            return verticationCode
+        }
+
+        function getCourseDataIdFromURL() {
+            const param = new URLSearchParams(window.location.search)
+            const courseName = param.get('id')
+            return courseName
+        }
+
+        const url = `/get-netids?id=${getCourseDataIdFromURL()}&code=${getCodeFromURL()}`
+        const promiseData = fetch(url).then(jsonData => jsonData.json()).then(data => {
+            // need the following redirects to go to an "error page". The current relocation (thanks.html) is just a placeholder
+            if (data === "invalid link") {
+                window.location.href = "/frontend/error404.html"
+            }
+            else if(data === "Survey has already been taken") {
+                window.location.href = "/frontend/error403.html"
+            }
+            else if(data === "This course does not use the Optimal Groups survey") {
+                window.location.href = "/frontend/error400.html"
+            }
+            else if(data === "Student is not in this class") {
+                window.location.href = "/frontend/error400.html"
+            }
+            else if(data === "Deadline has passed") {
+                window.location.href = "/frontend/errorDeadline.html"
+            }
+            else {
+                return data;
+            }
+        });
+        
+        window.onload = async () => {
+            let jsondata = await promiseData;
+            getStudents(jsondata)
+            makeTable()
+            // allowSelection();
+            radioSelection();
+        };
+
+    </script>
+
+</head>
+<body>
+    <div class="outline">
+        <div class="child">
+            <h1>Teammate Preferences</h1>
+            <div class="instruct">
+                <h3>Instructions</h3>
+                <p> The first <b>four</b> options are to be the classmates you <b>prefer</b> to be in your group. You may pick up to four classmates or none if you have no preference.</p>
+                <p>The last <b>two</b> options are be for the classmates you do <b>not prefer</b> to be in your team. You may pick up to two classmates or none if you have no non-preferences for teammates.</p>
+                <p>If you have absolutely no preferences, click the next button at the button to exit.</p>
+            </div>
+            <div class="tableP">
+                <table id="preferenceTable">
+                    <tr id="row1">
+                        <th></th>
+                        <th colspan="4" style="font-size: large; border: 1px solid black;">Preferences</th>
+                        <th colspan="2" style="font-size: large; border: 1px solid black;">Non-Preferences</th>
+                    </tr>
+                    <tr id="row2">
+                        <th></th>
+                        <th>1<sup>st</sup></th>
+                        <th>2<sup>nd</sup></th>
+                        <th>3<sup>rd</sup></th>
+                        <th>4<sup>th</sup></th>
+                        <th>1<sup>st</sup></th>
+                        <th>2<sup>nd</sup></th>
+                    </tr>
+                </table>
+            </div>
+            <!-- submit button -->
+            <div class="nextGroup">
+                <button onclick="return preferences()" class="next-bttn" type="submit" id="submitBttn">Submit</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

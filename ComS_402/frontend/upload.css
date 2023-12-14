@@ -1,0 +1,181 @@
+/* elements */
+html, body {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+    background-position: center center;
+    background: repeating-linear-gradient(to bottom right, #7A99AC, #0d161d);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    min-height: 100vh;
+}
+h1 {
+    background-color: #EED484;
+    border-radius: 5px;
+    margin: auto 10px auto 10px;
+    padding: 5px;
+    text-align: center;
+}
+/* Classes */
+.child {
+    background-color: #FAFAFA;
+    border: none;
+    box-shadow: rgba(26, 69, 82, 0.4) 0 5px 20px;
+    margin: 2vh;
+    padding: 10px;
+}
+.upload-outline {
+    border: 4px solid white;
+    margin: 4vh;
+    width: 75%;
+    margin: 10px auto;
+    position: relative;
+}
+.instruct {
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    margin: auto;
+    width: 80%;
+}
+.instruct h2 {
+    text-align: center;
+}
+.instruct p {
+    text-align: center;
+}
+.inputs-class {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 75px;
+    margin-bottom: 25px;
+}
+
+.inputs-class label {
+    flex-basis: 150px;
+    text-align: right;
+    padding-right: 10px;
+}
+#courseID, #groupSizeID {
+    width: 125px;
+    margin-right: 25px;
+}
+#deadlineDateID {
+    width: 125px;
+    margin-right: -12px;
+}
+#deadlineTimeID {
+    width: 125px;
+    margin-right: -30px;
+}
+.deadlineDate-class {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 134px;
+    margin-bottom: 25px;
+}
+.deadlineTime-class {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 150px;
+    margin-bottom: 20px;
+}
+.deadlineDate-class label, .deadlineTime-class label {
+    flex-basis: 170px;
+    text-align: right;
+    padding-right: 9px;
+}
+.uploadGroup {
+    text-align: right;
+    margin: 5vh 17vh 5vh 5vh;
+}
+.upload-bttn {
+    background-color:rgb(255, 255, 255);
+    border: 1px solid rgb(225, 229, 233);
+    border-radius: 5px;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px;
+    color: #2f353a;
+    font-size: 15px;
+    padding: 15px 25px 15px 25px;
+}
+.upload-bttn:hover {
+    color: white;
+    font-weight: bold;
+    background-color: #7A99AC;
+    border: 1px solid #7A99AC;
+}
+.flex-container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.upload-status-class {
+    height: 50px; 
+    overflow: hidden;
+    text-align: center;
+}
+#dropArea.highlight {
+    background-color: #f0f0f0;
+}
+#dropArea {
+    border: 2px dashed #696b6d;
+    padding: 40px;
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    margin-top: 10px;
+}
+#fileButton {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #7A99AC;
+    color: #fff;
+    border: 1px solid #7A99AC;
+    border-radius: 5px;
+}
+#selectedFile {
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+}
+#removeFileButton {
+    display:none;
+}
+.summaryInputs {
+    text-align: right;
+}
+#submissionSummary {
+    text-align: center;
+}
+.summaryInputs {
+    display: inline-flexbox;
+    text-align: center;
+}
+.summaryInputs label {
+    text-decoration: underline;
+}
+#successMessageID {
+    text-align: center;
+    color: #006400;
+}
+#endingMessageID {
+    margin-top: 60px;
+    margin-left: 20px;
+}
+#spinAnimation {
+    margin: auto;
+    width: 40px;
+    height: 40px;
+    border: 5px solid #cecaca;
+    border-bottom-color: #7A99AC;
+    border-radius: 50%;
+    display: none;
+    box-sizing: border-box;
+    animation: spinner 2s linear infinite;
+}
+@keyframes spinner {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

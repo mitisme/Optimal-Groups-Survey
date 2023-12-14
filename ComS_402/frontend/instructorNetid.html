@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="survey.css">
+    <title>Optimal Survey</title>
+
+    <script src="functions.js" defer></script>
+
+    <script>
+
+    </script>
+
+</head>
+<body>
+    <div class="outline">
+
+        <!-- survey begins -->
+        <div class="child">
+            <h1>Instructor Sign Up</h1>
+            <div class="instruct">
+                <h3>Introduction</h3>
+                <p style="text-align: center;">To check if you are able to use Optimal Survey you will first need to enter your netid.
+                    <br>Please enter your netid in the box below:
+                </p>
+            </div>
+
+            <form id=instructorNetidForm onsubmit="return postInstructorNetid();">
+                <!-- Enter netid -->
+                <div class="netGroup">
+                    <input class="netid-input" type="text" name="netid" id="instructorNetid" placeholder="netid" required>
+                    <span class="netid-addon" id="netid-addon">@iastate.edu</span>
+                </div> 
+
+                <!-- Next button -->
+                <div class="nextGroup">
+                    <button class="next-bttn" type="submit" id="nextBttn">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="survey.css">
+    <title>Admin Page</title>
+
+    <script src="functions.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script>
+
+        window.onload = async () => {
+            //retrieve list of instructors
+            const instructorsData = await getInstructors();
+            //create table of instructors
+            var numCells = 3;
+            tableofInstuctors(instructorsData, numCells);
+
+             //obtain number of rows in the table to ensure newly added rows are in the correct position
+            var rows = $('#instructorTable tr').length;
+            var i = (rows != 0) ? rows : 0;
+            //add three table cells: instructor name, netid, and save button
+            $(document).on('click', '#instructAdd', function(){
+                $("#instructorTable").append(
+                    `<tr id="row${i}">
+                        <td id="nameCell${i}">
+                            <input type="text" id="name${i}" class="inputInstruct" placeholder="Name"/>
+                        </td>
+                        <td id="netCell${i}">
+                            <input type="text" id=netid${i} class="inputInstruct" placeholder="Netid"/>
+                        </td>
+                        <td>
+                            <button type="button" name="save" id="${i}" class="saveBttn">Save</button>
+                        </td>
+                    </tr>`);
+                i++;
+            });
+        }
+
+        //if save button is clicked, instructor's net id is checked if it is valid
+        //if valid, add to table
+        $(document).on('click', '.saveBttn', async function(){
+            var bttnId = $(this).attr("id");
+            const name = document.getElementById("name" + bttnId).value;
+            const netid = document.getElementById("netid" + bttnId).value;
+
+            //validate netid
+            const message = await isValidId(netid, name);
+
+                //if validation is true
+                if (message == "valid") {
+                    $('#row'+ bttnId).remove();
+                    var table = document.getElementById('instructorTable');
+                    //displays information and replaces save button with remove button
+                    var tr = createTableRow(bttnId, name, netid, 3);
+                    table.appendChild(tr);
+                }
+                //else alert
+                else {
+                    alert("Invalid netid");
+                }
+        });
+
+        //if clicked, triggers delete request
+        $(document).on('click', '.removeBttn', async function(){
+            var bttnId = $(this).attr("id");
+            const netid = $("#" + bttnId).closest('tr').find('td:eq(1)').text()
+            var condition = await removeID(netid)
+            if (condition) {
+                $('#row'+ bttnId).remove();
+            }
+            else {
+                alert("Unable to remove instructor");
+            }
+        });
+        
+    </script>
+
+</head>
+<body>
+    <div class="outline">
+        <div class="child">
+            <button class="next-bttn" onclick="window.location.href='upload.html'" type="button" id="goToUpload-Bttn"><strong>Go To Upload</strong></button>
+            <h3>Admin Page</h3>
+            <!-- list of instructors below with remove button -->
+            <div class="tableInstruct">
+            <table class="instructTable" id="instructorTable">
+            </table>
+            </div>
+            <!-- add instructor button -->
+            <p class="addInstructorGroup">
+                <b>Add Instructor</b>
+                <button id="instructAdd" class="addBttn" type="button">+</button>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

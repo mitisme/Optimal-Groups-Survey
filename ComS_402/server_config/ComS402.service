@@ -1,0 +1,11 @@
+[Unit]
+Description=Gunicorn instance to serve myproject
+After=network.target
+
+[Service]
+User=rahuln2
+Group=rahuln2_deploy
+WorkingDirectory=/home/rahuln2/loop2/optimal-groups/ComS_402
+Environment="/home/rahuln2/loop2/optimal-groups/ComS_402/myprojectenv/bin/guicorn"
+ExecStart=/home/rahuln2/.local/bin/gunicorn --workers 1 --threads 4 --bind 0.0.0.0:8080 app:app
+WantedBy=multi-user.target

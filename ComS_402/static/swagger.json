@@ -1,0 +1,255 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Optimal Groups API Documentation",
+    "description": "",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0.11"
+  },
+  "servers": [
+    {
+      "url": "http://coms-402-001.class.las.iastate.edu/"
+    }
+  ],
+  "paths": {
+    "/instructor-login": {
+      "post": {
+        "summary": "verify if the user is a authorized instructor",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "netid": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Returns \"finished\" upon an authorized netid submission or \"Error, netid not found\" upon a unathorized netid submission"
+          }
+        }
+      }
+    },
+    "/instructor-delete/{netid}": {
+      "post": {
+        "summary": "remove access to an instructor",
+        "parameters": [
+          {
+            "name": "netid",
+            "in": "path",
+            "required": true,
+            "description": "The netid of the instructor to be removed",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns \"successful delete\" upon successful instructor deletion or \"not found\" upon a failed deletion attempt or \"admin\" if attempt was on an admin instructor"
+          }
+        }
+      }
+    },
+    "/add-instructor": {
+      "post": {
+        "summary": "grant access to an instructor",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "netid": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Returns \"success\" upon successful instructor addition or \"error\" upon a failed attempt"
+          }
+        }
+      }
+    },
+    "/get-instructors": {
+      "get": {
+        "summary": "return a list of authorized instructors",
+        "responses": {
+          "200": {
+            "description": "Returns a JSON object containing the list of authorized instructors"
+          }
+        }
+      }
+    },
+    "/check-code": {
+      "post": {
+        "summary": "Posts the user inputted code to check for validation",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email_code": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Returns \"success\" upon a successful validation"
+          },
+          "400": {
+            "description": "Returns \"fail\" upon a failed validation"
+          }
+        }
+      }
+    },
+    "/submit-form": {
+      "post": {
+        "summary": "Submits an HTML form to create the preferences survey for a course",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "course": {
+                    "type": "string"
+                  },
+                  "groupSize": {
+                    "type": "integer"
+                  },
+                  "deadlineDate": {
+                    "type": "string"
+                  },
+                  "deadlineTime": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Redirects to the success.html page"
+          }
+        }
+      }
+    },
+    "/submit-survey": {
+      "post": {
+        "summary": "Submits the student's answers to the survey",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "teammateList": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "A list of survey results."
+                  },
+                  "course": {
+                    "type": "string",
+                    "description": "The name of the course."
+                  },
+                  "code": {
+                    "type": "string",
+                    "description": "The verification code for the recipient."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Redirects to the thanks.html page"
+          }
+        }
+      }
+    },
+    "/send-code": {
+      "get": {
+        "summary": "Sends a new authentication code to the instructor's email if the current code is over 24 hours old",
+        "responses": {
+          "200": {
+            "description": "Returns a JSON object containing either \"new_code\" for a newly sent code or \"current_code\" if current one is valid"
+          }
+        }
+      }
+    },
+    "/get-email": {
+      "get": {
+        "summary": "Returns the email that received the authentication code",
+        "responses": {
+          "200": {
+            "description": "Returns a JSON object that contains the instructor email"
+          }
+        }
+      }
+    },
+    "/get-netids": {
+      "get": {
+        "summary": "populate the preferences survey for a specific student",
+        "parameters": [
+          {
+            "name": "course",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "code",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a JSON array of students in the course, excluding the survey recipient"
+          },
+          "400": {
+            "description": "Redirects to the appropriate error page"
+          }
+        }
+      }
+    }
+  }
+}

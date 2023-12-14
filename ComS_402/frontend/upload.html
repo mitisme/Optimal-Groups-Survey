@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="upload.css">
+    <script src="script.js" defer></script>
+    <title>Optimal Survey</title>
+
+</head>
+<body>
+    <!-- background shape -->
+    <div class="upload-outline">
+
+        <div class="child">
+            <h1>Optimal Groups Upload</h1>
+            <div class="instruct">
+                <h2>Instructions</h2>
+                <p> Fill out the following fields below and upload a CSV file containing the student names and net-ids. </p>
+                    <p>The deadline date can be set to any day within the upcoming week from 8:00 AM to 8:00 PM.</p>
+            </div>
+            <!-- Inputs and CSV upload -->
+            <form method="post" action="/submit-form" enctype="multipart/form-data">
+                <div class="inputs-container">
+                    <div class="inputs-class">
+                        <label for="courseID">Course:</label>
+                        <input class="instruct-inputs" id="courseID" name="course" type="text" placeholder="BUSAD 250" required>
+                    </div>
+                    <div class="inputs-class">
+                        <label for="groupSizeID">Group size:</label>
+                        <input class= "instruct-inputs" id="groupSizeID" name="groupSize" type="number" placeholder="4" required>
+                    </div>
+                    <div class="deadlineDate-class">
+                        <label for="deadlineDateID">Deadline date:</label>
+                        <input type="date" id="deadlineDateID" name="deadlineDate" required >
+                    </div>
+                    <div class="deadlineTime-class">
+                        <label for="deadlineTimeID">Deadline time:</label>
+                        <input type="time" id="deadlineTimeID" name="deadlineTime" min="08:00" max="20:00" required >
+                    </div>
+                </div>
+                
+                <div>
+                    <div id="dropArea">
+                        <p>Drag and drop CSV file here</p>
+                        <p>or</p>
+                        <input type="file" name="file" id="fileInput" accept=".csv" style="display: none;">
+                        <label for="fileInput" id="fileButton" >Select CSV File</label>
+                    </div>
+                </div>
+                <div class="upload-status-class">
+                    <pre id="uploadStatus"> </pre>
+                </div>
+                <div class="flex-container">
+                    <span id="selectedFile">No file selected</span>
+                    <button type="button" id="removeFileButton"><strong>X</strong></button>
+                </div>
+                <div class="uploadGroup">
+                    <button class="upload-bttn" type="submit" id="uploadBttn"><strong>Upload</strong>
+                        <div id="spinAnimation"></div>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

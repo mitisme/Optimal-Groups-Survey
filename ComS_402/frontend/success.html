@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="upload.css">
+    <title>Optimal Survey</title>
+</head>
+<body>
+    <div class="upload-outline">
+        <div class="child">
+            <h1>Optimal Groups Upload</h1>
+            <h4 id="successMessageID"><strong>Upload Successful!</strong> </h4>
+            <div class ="summaryInputs">
+                <h2 id = "submissionSummary">Submission Summary </h2>
+                    <label for ="sumCourseID"><strong>Course</strong></label>
+                    <p id="sumCourseID"> </p>
+        
+                    <label for ="sumGroupSizeID"><strong>Group size</strong></label>
+                    <p id="sumGroupSizeID"> </p>
+                
+                    <label for ="sumDeadlineDateID"><strong>Deadline date</strong></label>
+                    <p id="sumDeadlineDateID"> </p>
+            
+                    <label for ="sumDeadlineTimeID"><strong>Deadline time</strong></label>
+                    <p id="sumDeadlineTimeID"> </p>
+                
+                    <label for ="sumFileID"><strong>Uploaded file</strong></label>
+                    <p id="sumFileID"> </p>
+            </div>
+            <p id = "endingMessageID"><strong>You can now exit the page or return to the upload screen.</strong></p>
+            <div class="uploadGroup">
+                <button class="upload-bttn" onclick="returnHomeScreen()" id="uploadBttn"><strong>Return</strong></button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

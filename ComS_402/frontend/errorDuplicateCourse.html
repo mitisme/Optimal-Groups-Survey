@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="survey.css">
+    <title>Duplicate Course</title>
+
+    <script>
+        function returnUploadScreen() {
+        window.location.href = 'upload.html';
+    }
+    </script>
+</head>
+<body>
+    
+    <div class="outline">
+        <div class="child">
+            <h2>Duplication Error</h2>
+            <h3>Course Already Exists in Database</h3>
+            <h3>(˘･_･˘)</h3>
+            <p class="error">Oh No! It seems this course has already been registered.</p>
+            <div class="nextGroup">
+                <button onclick="returnUploadScreen()" class="next-bttn"> <strong>Return to Upload</strong></button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

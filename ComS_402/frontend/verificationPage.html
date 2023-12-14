@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="survey.css">
+    <title>Verification Page</title>
+
+    <script src="functions.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script>
+         window.onload = async () => {
+            var verificationInputLength = 7;
+            createCodeInputs(verificationInputLength);
+            moveBetweenInputs();
+
+            const email = await getInstructorEmail();
+            displayEmail(email);
+            document.getElementById("emailSentStatus").innerHTML = ( await getVerificationCode() === 'new_code') ? 'Please type in the verification code that has been sent in the email address below.' : 'Verification code has not yet expired, please check your email for verification code.';
+        };    
+
+    </script>
+
+</head>
+
+<body>
+    <div class="child">
+        <div class="OTPcontainer">
+            <div class="verificationTitle">Verify Your Email Address</div>
+            <p id="emailSentStatus" style="color: rgb(124, 123, 129);">
+                Please type in the verification code that has been sent in the email address below.
+            </p>
+            <div id="emailContainer"></div>
+            <form id=verificationForm onsubmit="return postVerificationCode(getCodeInputVals());">
+                <div id="verificationInputs">
+                    <!-- inputs generate here -->
+                </div>
+                <div class="nextGroup">
+                    <button class="next-bttn" onclick="window.location.href='instructorNetid.html'" type="button" id="backBttn" >Back</button>
+                    <button class="next-bttn" type="submit" id="submitBttn" value="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

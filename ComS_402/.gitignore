@@ -1,0 +1,5 @@
+myprojectenv/
+__pycache__/
+config.json
+/venv/
+cronlogs.log

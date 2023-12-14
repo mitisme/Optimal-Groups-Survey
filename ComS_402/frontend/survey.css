@@ -1,0 +1,351 @@
+/*
+@media is for adapting to most mobile views
+*/
+@media screen and (max-width: 260px), 
+(min-device-width: 280px) and (max-device-width: 920px)
+{
+    h1{
+        font-size: 1.2rem;
+    }
+    div.outline {
+        border: none;
+        margin: auto;
+    }
+    div.instruct{
+        margin: auto;
+    }
+    div.instruct > h3 {
+        font-size: 1.1rem;
+    }
+
+    #row1, #row2 {
+        display: none;
+    }
+
+    td.studentCell {
+        text-align: center;
+    }
+
+    td.radioBox, td.nonRadioBox {
+        padding-left: 20px;
+        text-align: initial;
+    }
+
+	table, thead, tbody, td, tr { 
+		display: block; 
+	}
+
+	
+	tr { 
+        border: 1px solid #6d646456;
+        margin-top: 10px;
+    }
+	
+	td:after { 
+		position: absolute;
+        padding-left: 5vh;
+		white-space: nowrap;
+	}
+
+    input.codeInput {
+        width: 3.5vh;
+        height: 3.5vh;
+        font-size: 12px;
+    }
+
+    div.verificationTitle {
+        font-size: 1.2rem;
+        margin: 1vh;
+    }
+    div#emailContainer, p {
+        font-size: small;
+    }
+
+    div.nextGroup {
+        margin: 3vh 0vh 2vh 2vh;
+    }
+    
+    button.next-bttn {
+        padding: 10px 20px 10px 20px;
+    }
+
+	td:nth-of-type(2):after { content: "1st"; }
+	td:nth-of-type(3):after { content: "2nd"; }
+	td:nth-of-type(4):after { content: "3rd"; }
+	td:nth-of-type(5):after { content: "4th"; }
+	td:nth-of-type(6):after { content: "1st"; }
+    td:nth-of-type(7):after { content: "2nd"; }
+}
+
+/* elements */
+html, body {min-height: 100%;}
+body {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+    background-position: center center;
+    background: repeating-linear-gradient(to bottom right, #7A99AC, #0d161d);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+h1 {
+    background-color: #EED484;
+    border-radius: 5px;
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+}
+h2 {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+}
+h3 {
+    font-weight: lighter;
+    font-size: 2rem;
+    text-align: center;
+}
+input[type=radio] {
+    padding: 7px;
+    appearance: none;
+    background-color: rgb(255, 255, 255);
+    border-radius:50%;
+ }
+input[type="radio"]:checked {
+    padding: 7px;
+    appearance: none;
+    background-color: rgb(50, 48, 51);
+    border-radius:50%;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px;
+}
+table {
+    border-spacing: 5px;
+    margin: auto;
+    /* table-layout: fixed; */
+    width: 95%;
+}
+th, td {
+    padding: 15px;
+}
+
+
+/* Classes */
+
+/* adminInstructor */
+.tableInstruct {
+    border-collapse: collapse;
+    box-sizing: border-box;
+    text-align: center;
+    margin: 5vh;
+    padding: 3vh;
+}
+table.instructTable {
+    table-layout: fixed;
+}
+table.instructTable td {
+    padding: 20px;
+}
+.addInstructorGroup {
+    text-align: center;
+}
+.addBttn {
+    margin-left: 1vw;
+    background-color: rgb(57, 115, 129);
+    width: 5vh;
+    height: 5vh;
+    color: #f7faf4;
+    font-size: 20px;
+    border: solid 1px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    box-shadow: 5px 5px 5px rgb(0, 0, 0, .15);
+    border: solid rgb(30, 84, 99) 1px;
+}
+.addBttn:hover {
+    font-weight: bold;
+}
+.saveBttn {
+    background-color: rgb(58, 139, 75); 
+    border: 1px solid rgb(48, 121, 63);
+    color: white;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 8px;
+    width: 8em;
+}
+.saveBttn:hover {
+    font-weight: bold;
+}
+.removeBttn {
+    background-color: rgb(182, 26, 21); 
+    border: 1px solid rgb(155, 24, 20);
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 8px;
+    width: 8em;
+}
+.removeBttn:hover {
+    font-weight: bold;
+}
+.inputInstruct {
+    font-size: 16px;
+    border: 1px solid rgb(175, 177, 179);
+    border-radius: 5px;
+    padding: 8px;
+    width: 15vw;
+}
+#goToUpload-Bttn {
+    margin-left: 85%;
+}
+/*  */
+
+
+/* preferences */
+.tableP{
+    border-collapse: collapse;
+    box-sizing: border-box;
+    padding: 3vh;
+}
+.studentCell {
+    padding: 15px 35px 15px 0px;
+}
+.radioBox {
+    background-color: #aaa0a056;
+    border: 1px solid #6d646456;
+    text-align: center;
+}
+.nonRadioBox {
+    background-color: #747d9c56;
+    border: 1px solid #6d646456;
+    text-align: center;
+}
+/*  */
+
+
+/* instructorNetid */
+.netid-addon {
+    background-color: #7A99AC;
+    border: 1px solid #7A99AC;
+    border-radius: 0px 5px 5px 0px;
+    color: #efeff3;
+    padding: 8px;
+}
+.netid-input {
+    border: 1px solid rgb(175, 177, 179);
+    border-radius: 5px 0px 0px 5px;
+    padding: 8px;
+}
+.netGroup {
+    display: flex;
+    justify-content: center;
+}
+/*  */
+
+
+/* verification */
+.OTPcontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 2vh;
+}
+.verificationTitle {
+    font-size: xx-large;
+    margin: 5vh;
+}
+.verificationInputs {
+    display: flex;
+    flex-direction: row;
+}
+.codeInput {
+    background-color:rgb(113, 116, 122);
+    border: none;
+    border-radius: 5px;
+    margin: 2px;
+    width: 6vw;
+    height: 6vw;
+    text-align: center;
+    font-size: 16px;
+    color: rgb(216, 218, 224);
+    font-weight: bold;
+}
+.codeInput:focus {
+    background-color: #555a5f;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px;
+}
+#backBttn {
+    float: left;
+}
+/*  */
+
+
+/* Thanks and error pages */
+.thanksTitle {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 50px;
+    font-style: italic;
+    color: #e2b93d;
+}
+.thanksParagraph {
+    font-size: 20px;
+    font-style: italic;
+    text-align: center;
+}
+.error {
+    text-align: center;
+}
+/*  */
+
+
+/* All pages */
+.child {
+    background-color: #FAFAFA;
+    border: none;
+    box-shadow: rgba(26, 69, 82, 0.4) 0 5px 20px;
+    margin: 2vh;
+    padding: 20px;
+}
+.instruct {
+    margin:7vh;
+}
+.nextGroup {
+    text-align: right;
+    margin: 7vh;
+}
+.next-bttn {
+    background-color:rgb(255, 255, 255);
+    border: 1px solid rgb(225, 229, 233);
+    border-radius: 5px;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px;
+    color: #2f353a;
+    font-size: 15px;
+    padding: 15px 25px 15px 25px;
+}
+.next-bttn:hover {
+    color: white;
+    font-weight: bold;
+    background-color: #7A99AC;
+    border: 1px solid #7A99AC;
+}
+.outline {
+    border: 4px solid white;
+    margin: 5vh;
+    position: relative;
+}
+.trapezoid {   
+    border-top: 100vh solid transparent;
+	border-right: 250vh solid #B6C9D6;  
+    height: 0;
+    position: absolute;
+    right: 0px;
+    width: 0;
+}
+
+/*ids*/
+#emailContainer {
+    color:rgb(124, 123, 129);
+    margin-bottom: 5vh;
+}
