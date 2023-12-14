@@ -7,7 +7,7 @@ This requires a moderate amount of background knowledge to implement; including 
 This was create by students for a course project, 
 Thanks for checking it out.
 
-#To Pull this repo
+# To Pull this repo
 Try HTTP to clone:
   1. click on clone
   2. click HTTP
