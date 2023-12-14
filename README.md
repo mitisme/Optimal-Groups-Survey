@@ -21,17 +21,20 @@ Try HTTP to clone:
 SSH Clone if HTTP doesnt work
   1. a github account will most likely be needed
   2. create an ssh key pair somewhere you will remember
-  3. Go into your github(upper right) and click settings
-  4. Click on SSH and GPG keys
-  5. add SSH key
-  6. open your .pub key and copy its contents
-  7. past into the textbox on github and give it a name
-  8. submit
-  9. click on clone
-  10. click HTTP
-  11. Click the copy button or highlight and copy link
-  12. go to your chosen folder
-  13. rightclick and 'git bash here'
-  14. 'git init' if you haven't
-  15. 'git clone {paste the link here}'
-  16. enjoy
+  3. now open git bash in your chosen folder
+  4. run 'ssh-keygen -t rsa -b 4096 -C "your_email@example.com"'
+  5. this will create 2 key and ask for a name and password (hit enter twice to skip password)
+  7. Go into your github(upper right) and click settings
+  8. Click on SSH and GPG keys
+  9. add SSH key
+  10. open your .pub key and copy its contents
+  11. past into the textbox on github and give it a name
+  12. submit
+  13. click on clone
+  14. click HTTP
+  15. Click the copy button or highlight and copy link
+  16. go to your chosen folder
+  17. rightclick and 'git bash here'
+  18. 'git init' if you haven't
+  19. 'git clone {paste the link here}'
+  20. enjoy
